@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Strategies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-article-list-item
+    *ngFor="let article of loadedArticles"
+    [ArticleListItem]="article"
+  ></app-article-list-item>
+</ion-content>

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title routerLink="/main/tabs/home">MindSpace</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="home-page">
+    <ion-text>
+      <h1>Hi, {{name}}</h1>
+      <h3>Today you feel</h3>
+    </ion-text>
+  </div>
+
+  <div class="bigFrame">
+    <div
+      id="circleFrame"
+      *ngFor="let emotion of topFiveEmotions; index as i"
+      [ngStyle]="{width: loadedEmotions[i].size, height: loadedEmotions[i].size, top: circlesPos[i].top, left: circlesPos[i].left}"
+    >
+      <ion-img
+        *ngIf="loadedEmotions[i].type=='happy'"
+        src="../../assets/yellow.png"
+      ></ion-img>
+      <ion-img
+        *ngIf="loadedEmotions[i].type=='excited'"
+        src="../../assets/orange.png"
+      ></ion-img>
+      <ion-img
+        *ngIf="loadedEmotions[i].type=='sad'"
+        src="../../assets/blue.png"
+      ></ion-img>
+      <ion-img
+        *ngIf="loadedEmotions[i].type=='anger'"
+        src="../../assets/red.png"
+      ></ion-img>
+      <ion-img
+        *ngIf="loadedEmotions[i].type=='disgust'"
+        src="../../assets/green.png"
+      ></ion-img>
+      <ion-img
+        *ngIf="loadedEmotions[i].type=='fear'"
+        src="../../assets/purple.png"
+      ></ion-img>
+      <ion-img
+        *ngIf="loadedEmotions[i].type=='neutral'"
+        src="../../assets/grey.png"
+      ></ion-img>
+      <div
+        id="emotionName"
+        [ngStyle]="{top: textPos[i].top, left: textPos[i].left}"
+      >
+        {{loadedEmotions[i].name}}
+      </div>
+    </div>
+  </div>
+  <!-- emotion map end -->
+
+  <div>
+    <h4 style="margin-top: 2em">Scroll to show all emotions</h4>
+    <!-- emotion list start-->
+    <ion-list>
+      <ion-item class="link" *ngFor="let e of loadedEmotions">
+        <div class="dot" slot="start">
+          <div [id]="e.type"></div>
+        </div>
+        <!-- url link -> explore/emotion.name-->
+        <ion-text [routerLink]="['../explore', e.name]">{{e.name}}</ion-text>
+        <ion-text slot="end">{{e.times}} times</ion-text>
+      </ion-item>
+    </ion-list>
+    <!-- emotion list end-->
+  </div>
+</ion-content>

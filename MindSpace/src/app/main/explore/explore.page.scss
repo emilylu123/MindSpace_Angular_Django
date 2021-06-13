@@ -1,0 +1,55 @@
+.capitalize {
+  text-transform: capitalize;
+  color: #000000;
+}
+#dateText {
+  text-align: center;
+}
+#circle {
+  margin: auto;
+  text-align: center;
+}
+
+#prev {
+  position: absolute;
+  left: 5px;
+  width: 85px;
+  padding: 10px;
+  text-align: center;
+}
+
+#next {
+  position: absolute;
+  right: 5px;
+  width: 85px;
+  padding: 10px;
+  text-align: center;
+}
+#anger {
+  text-transform: capitalize;
+  color: #ef7c8e;
+}
+#happy {
+  text-transform: capitalize;
+  color: #fbe5c8;
+}
+#excited {
+  text-transform: capitalize;
+  color: #bf4c41;
+}
+#sad {
+  text-transform: capitalize;
+  color: #8fdde7;
+}
+#fear {
+  text-transform: capitalize;
+  color: #877785;
+}
+#disgust {
+  text-transform: capitalize;
+  color: #b6e2d3;
+}
+#neutral {
+  text-transform: capitalize;
+  color: #dacac4;
+}

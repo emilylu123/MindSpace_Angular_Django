@@ -1,0 +1,100 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+
+$base-color: #219653;
+$happy-color: purple;
+$excited-color: orange;
+$sad-color: blue;
+$anger-color: red;
+$fear-color: plum;
+$neutral-color: grey;
+$disgust-color: lightseagreen;
+
+html,
+body {
+  font-weight: 400;
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+  font-weight: 500;
+}
+
+.center {
+  text-align: center;
+}
+
+.link {
+  cursor: pointer;
+}
+
+ion-button {
+  width: 75%;
+  margin: 15px auto;
+}
+
+.avatar {
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+}
+
+span,
+p,
+div {
+  .happy {
+    color: $happy-color;
+  }
+  .sad {
+    color: $sad-color;
+  }
+  .fear {
+    color: $fear-color;
+  }
+  .anger {
+    color: $anger-color;
+  }
+  .excited {
+    color: $excited-color;
+  }
+  .disgust {
+    color: $disgust-color;
+  }
+  .neutral {
+    color: $neutral-color;
+  }
+}

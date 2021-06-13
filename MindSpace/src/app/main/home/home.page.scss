@@ -1,0 +1,80 @@
+.home-page {
+  text-align: center;
+  margin: auto;
+}
+
+.bigFrame {
+  position: relative;
+  margin: auto;
+  width: 100vw;
+  height: 83vw;
+  border-style: hidden;
+
+  #emotionName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(70, 70, 70);
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 1px 1px #b4b3b383;
+  }
+
+  #circleFrame {
+    position: absolute;
+    max-height: 42%;
+    max-width: 42%;
+  }
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: grey;
+
+  #happy {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: yellow;
+  }
+  #excited {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: orange;
+  }
+  #sad {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: blue;
+  }
+  #anger {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: red;
+  }
+  #fear {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: plum;
+  }
+  #disgust {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: lightseagreen;
+  }
+  #neutral {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: grey;
+  }
+}

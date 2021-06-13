@@ -1,0 +1,63 @@
+version: '3'
+
+#Define services needed for the application
+
+#Following defines a service called "app",
+# building from the current directory,
+# mapping port 8000 on localhost to 8000 on docker image,
+# setting volume of changes in app directory on local machine to be automatically applied to app folder in docker image
+# setting the database environment and set it to run with dependency of "db" service
+#Side notes:
+# '>' on command is needed to allow multiple lines of commands to be run
+# 'sh -c' means running the following command with shell
+# The wait_for_db command is the custom code to make sure database is finished setting up before attempting to connect
+# The migrate command is for creating database tables required for the app
+# The runserver command will run the Django application at port 8000 on docker image
+#   (which is then mapped to port 8000 on local machine as specified above)
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py migrate &&      
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=app
+      - DB_USER=mysql
+      - DB_PASS=secret
+      - U1_UID=m78via5KcyPUSe1XJb0Tu3XwcZD3
+      - U2_UID=h28UH8bcXOVR811IR786r5AlfrJ2
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/mindspace-adelaide-firebase-adminsdk-yqysv-eb4cc6f124.json
+      - FIREBASE_CLIENT_API_KEY=AIzaSyCJcKmC52J2wggjOtQS33Mr6g2T4czMU8Y
+    depends_on:
+      - db
+
+  db:
+    platform: linux/x86_64 #For Apple M1 processor
+    image: mysql:8.0
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - ./data/db/mysql:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d/:ro
+#Run the following command to build the docker image with service defined above
+# docker-compose build
+
+#Run the following command to run all the services defined in this file:
+# docker-compose up
+
+#For running command one time for a particular running service, follow the following example:
+# docker-compose run --rm app sh -c "django-admin startproject app ."
+#   (Start a now project "app" at the working directory defined in Dockerfile)
+# docker-compose run --rm app sh -c "python manage.py startapp [appname]"
+#   (Create a new app in Django )
+# docker-compose run --rm app sh -c "python manage.py createsuperuser"
+#   (Create a superuser for the application)

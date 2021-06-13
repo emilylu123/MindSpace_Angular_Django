@@ -1,0 +1,36 @@
+<ion-card (click)="openPage(ArticleListItem.content)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="auto">
+        <div class="cardImage">
+          <img src="{{ ArticleListItem.imgPath }}" width="75" height="75" />
+        </div>
+      </ion-col>
+      <ion-col>
+        <ion-card-header>
+          <ion-card-title>{{ ArticleListItem.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ ArticleListItem.shortContent }}
+        </ion-card-content>
+        <div class="tag">
+          <ion-chip *ngIf="ArticleListItem.type == 'happy'" color="warning">
+            <ion-label>{{ ArticleListItem.tag }}</ion-label>
+          </ion-chip>
+          <ion-chip *ngIf="ArticleListItem.type == 'sad'" color="secondary">
+            <ion-label>{{ ArticleListItem.tag }}</ion-label>
+          </ion-chip>
+          <ion-chip *ngIf="ArticleListItem.type == 'anger'" color="danger">
+            <ion-label>{{ ArticleListItem.tag }}</ion-label>
+          </ion-chip>
+          <ion-chip *ngIf="ArticleListItem.type == 'fear'" color="medium">
+            <ion-label>{{ ArticleListItem.tag }}</ion-label>
+          </ion-chip>
+          <ion-chip *ngIf="ArticleListItem.type == 'disgust'" color="tertiary">
+            <ion-label>{{ ArticleListItem.tag }}</ion-label>
+          </ion-chip>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

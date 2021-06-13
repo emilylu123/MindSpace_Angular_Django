@@ -1,0 +1,29 @@
+<ion-text>
+  <h3>SIGN UP WITH EMAIL</h3>
+</ion-text>
+<!-- Inputs with labels -->
+<!-- <ion-item>
+  <ion-label position="floating">Your Name</ion-label>
+  <ion-input type="text" #userName required></ion-input>
+</ion-item> -->
+
+<ion-item>
+  <ion-label position="floating">Email Address</ion-label>
+  <ion-input type="text" #signUpEmail required></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Password</ion-label>
+  <ion-input type="password" #userPwd required></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-checkbox checked color="success"> </ion-checkbox>
+  <p>
+    <ion-text> I have read the </ion-text>
+    <ion-text color="success"> privacy policy </ion-text>
+  </p>
+</ion-item>
+
+<ion-button color="success" (click)="onClickSignup(signUpEmail, userPwd)" expand="block" shape="round"> SIGN UP
+</ion-button>

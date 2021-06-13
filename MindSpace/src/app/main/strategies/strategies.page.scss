@@ -1,0 +1,42 @@
+ion-card {
+  height: 160px;
+
+  img {
+    width: 75px;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+  }
+
+  ion-card-content {
+    padding: 0 !important;
+    font-size: 14px;
+  }
+
+  ion-card-title {
+    margin: -20px;
+    font-size: 22px;
+  }
+
+  .cardImage {
+    width: 75px;
+    height: 160px;
+    margin: 0;
+  }
+
+  .tag {
+    text-align: left;
+    margin-bottom: 0px;
+    margin-left: -15px;
+
+  }
+
+  .readMore {
+    float: right;
+    text-align: right;
+  }
+  .readMore a {
+    color: var(--color);
+    text-decoration: none;
+  }
+}

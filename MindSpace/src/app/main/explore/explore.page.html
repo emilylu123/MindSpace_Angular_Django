@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Explore</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text color="success">
+    <h1 class="capitalize">Explore {{emoTitle}} emotion</h1>
+  </ion-text>
+  <button id="prev" [routerLink]="['/main/tabs/explore', prevEmoTitle]">
+ {{prevEmoTitle}}
+  </button>
+  <button id="next" [routerLink]="['/main/tabs/explore', nextEmoTitle]">
+    {{nextEmoTitle}}
+
+  </button>
+  <div id="circle">
+    <circle-progress
+      [percent]="emoPercentage"
+      [radius]="50"
+      [outerStrokeWidth]="10"
+      [innerStrokeWidth]="6"
+      [outerStrokeColor]="color"
+      [innerStrokeColor]="color"
+      [animation]="true"
+      [animationDuration]="200"
+      [showSubtitle]="false"
+    ></circle-progress>
+  </div>
+  <ion-text>
+    <div id="dateText">
+      <button ion-button (click)="clickPrev()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </button>
+      {{ selectedFrom | date: 'dd/MM/YYYY'}} - {{ selectedTo | date:
+      'dd/MM/YYYY'}}
+      <button ion-button (click)="clickNext()">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </button>
+    </div>
+  </ion-text>
+  <highcharts-chart
+    [Highcharts]="Highcharts"
+    [options]="chartOptions"
+    style="width: 100%; height: 250px; display: block"
+  ></highcharts-chart>
+
+  <ion-text>
+    <h3>Trigger keywords</h3>
+  </ion-text>
+  <ion-list>
+    <ion-item *ngFor="let item of triggerKeywordsInTime | keyvalue">
+      <ion-text>{{item.key}}</ion-text>
+      <ion-text slot="end">{{item.value}} times</ion-text>
+    </ion-item>
+  </ion-list>
+
+  <!-- method 2 use fixed button to show insights modal -->
+  <ion-button
+    color="success"
+    expand="full"
+    shape="round"
+    (click)="showInsightsModal()"
+    >Add Awareness</ion-button
+  >
+
+  <!-- display added awareness -->
+  <!-- <ion-text *ngIf="insights">
+    <h4>Awareness on {{insights.hashtag.name}}</h4>
+    <p>{{insights.awareness}}</p>
+  </ion-text> -->
+</ion-content>

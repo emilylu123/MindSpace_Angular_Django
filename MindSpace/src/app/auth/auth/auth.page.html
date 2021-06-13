@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title routerLink='/main/tabs/home'>MindSpace</ion-title>
+  </ion-toolbar>
+  <!-- nav between login and sign up -->
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="switch">
+      <ion-segment-button value="login">
+        <ion-label>Log In</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="signup">
+        <ion-label>Sign Up</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-page">
+
+  <div [ngSwitch]="switch">
+    <!-- login tap content start here -->
+    <ion-list *ngSwitchCase="'login'">
+      <app-login></app-login>
+    </ion-list>
+
+    <!-- signup tap content start here -->
+    <ion-list *ngSwitchCase="'signup'">
+      <app-signup></app-signup>
+    </ion-list>
+
+    <!-- google auth content start here -->
+    <div>
+      <ion-button color="success" expand="block" shape="round" (click)="authService.googleAuth()">
+        <ion-icon name="logo-google"></ion-icon>
+        CONTINUE WITH GOOGLE
+      </ion-button>
+      <!-- <ion-button color="success" (click)="onClickFacebook()" expand="block" shape="round">
+        <ion-icon name="logo-facebook"></ion-icon>
+        CONTINUE WITH FACEBOOK
+      </ion-button> -->
+
+      <h6>
+        <ion-text class="link" color="success" routerLink="/auth/forgot-password">Forgot Password?
+        </ion-text>
+      </h6>
+      <h6>
+        <ion-text class="link" color="primary" (click)="demoUserLogin()">
+          <ion-icon name="person-circle-outline"></ion-icon> Demo User Click Here
+        </ion-text>
+      </h6>
+    </div>
+  </div>
+</ion-content>

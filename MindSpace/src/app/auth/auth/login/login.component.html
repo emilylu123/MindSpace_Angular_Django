@@ -1,0 +1,14 @@
+<ion-text>
+  <h3>LOGIN WITH EMAIL</h3>
+</ion-text>
+<ion-item>
+  <ion-label position="floating">Email Address</ion-label>
+  <ion-input type="text" #userName required></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Password</ion-label>
+  <ion-input type="password" #userPassword required></ion-input>
+</ion-item>
+<ion-button color="success" (click)="onClickLogin(userName, userPassword)" expand="block" shape="round">
+  LOGIN
+</ion-button>

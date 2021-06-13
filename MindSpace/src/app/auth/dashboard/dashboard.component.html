@@ -1,0 +1,32 @@
+<!-- Top navigation -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title routerLink='/main/tabs/home'>MindSpace</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Sidebar navigation -->
+<ion-content class="dashboard">
+
+  <!-- Main content -->
+  <ion-item>
+    <!-- Show user data when logged in -->
+    <div class="row" *ngIf="authService.userData as user">
+      <img class="avatar" src="{{(user.photoURL) ? user.photoURL : '/assets/demouser.png'}}" alt="{{user.displayName}}">
+      <h1>Hello, <strong>{{(user.displayName) ? user.displayName : 'Dear'}}</strong></h1>
+      <p>Email: <strong>{{user.email}}</strong></p>
+      <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+      <p>User ID: {{user.uid}}</p>
+    </div>
+  </ion-item>
+
+  <ion-button color="success" routerLink="/main/tabs/home" expand="block" shape="round">
+    <ion-icon name="log-in-outline"></ion-icon> Start Your MindSpace Journey
+  </ion-button>
+
+  <!-- Calling SignOut() Api from AuthService -->
+  <a class="link" (click)="authService.signOut()">
+    <ion-icon name="log-out-outline"></ion-icon>Log out
+  </a>
+
+</ion-content>

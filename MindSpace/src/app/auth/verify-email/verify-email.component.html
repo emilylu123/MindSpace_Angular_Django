@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title routerLink='/main/tabs/home'>MindSpace</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <h2>Thank You for Registering</h2>
+    </ion-item>
+    <ion-item>
+      <div *ngIf="authService.userData as user">
+        <h3>We have sent a confirmation email to <strong>{{user.email}}</strong>.</h3>
+        <p>Please check your email and click on the link to verify your email address.</p>
+      </div>
+    </ion-item>
+    <ion-item>
+      <!-- Calling SendVerificationMail() method using authService Api -->
+      <ion-button color="success" expand="block" shape="round" (click)="authService.sendVerificationMail()">
+        Resend Verification Email
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <span>Go back to?<span class="redirect" routerLink="/auth"> Log in</span></span>
+    </ion-item>
+  </ion-list>
+</ion-content>

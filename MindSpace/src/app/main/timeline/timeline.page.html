@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Timeline</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row" *ngIf="authService.userData as user">
+    <img class="avatar" src="{{(user.photoURL) ? user.photoURL : '/assets/demouser.png'}}" alt="{{user.displayName}}" />
+    <!-- TODO: update User name from database if it is not google auth-->
+    <h2><strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h2>
+  </div>
+  <ion-item>
+    <ion-label class="link" color="primary" routerLink="/auth/dashboard">Go to Dashboard</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label> {{viewTitle}} </ion-label>
+    <ion-buttons end>
+      <button ion-button [disabled]="isToday" (click)="today()">Today</button>
+      <button ion-button (click)="slidePrev()">Prev</button>
+      <button ion-button (click)="slideNext()">Next</button>
+    </ion-buttons>
+  </ion-item>
+
+  <!-- Display Calendar to choose date -->
+  <div style="height: 260px">
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+      [showEventDetail]="false" (onCurrentDateChanged)="passedDate($event)">
+    </calendar>
+  </div>
+
+  <!-- Display Historical Emotion of the day if Emotion is available-->
+  <ion-text *ngIf="matchedEmotions.length">
+    <!-- <ion-item style="margin-top: 1em"> -->
+    <ion-item>
+      <h3>Identified Emotions of the Day</h3>
+    </ion-item>
+    <!-- emotion list start-->
+    <ion-list>
+      <ion-item class="link" *ngFor="let u of matchedEmotions">
+        <div class="dot" slot="start">
+          <div [id]="u.type"></div>
+        </div>
+        <!-- url link -> explore/emotion.name-->
+        <ion-text [routerLink]="['../explore', u.name]">{{u.name}}</ion-text>
+        <ion-text slot="end">{{u.times}} times</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-text>
+</ion-content>
+
+<!-- Display Reflection of the day if reflection is available -->
+<ion-text *ngIf="matchedReflection.length">
+  <ion-item>
+    <h3>Reflection of the Day</h3>
+    <ion-icon name="chevron-down-outline" item-right *ngIf="isShow" (click)="isShow=!isShow" slot="end"></ion-icon>
+    <ion-icon name="chevron-forward-outline" item-right *ngIf="!isShow" (click)="isShow=!isShow" slot="end"></ion-icon>
+  </ion-item>
+  <ion-list *ngIf="isShow">
+    <h5 *ngFor="let m of matchedReflection">{{m}}</h5>
+  </ion-list>
+</ion-text>
