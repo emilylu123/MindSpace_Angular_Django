@@ -22,7 +22,7 @@ P.S. It is always good to first run "git pull" first before working on your chan
     docker-compose build\
     docker-compose up
 
-2.  After that, you can go to http://127.0.0.1/admin to access the admin page of the Django server
+2.  After that, you can go to http://127.0.0.1:8000/admin to access the admin page of the Django server
 
 ## Access the database with Django admin page
 
